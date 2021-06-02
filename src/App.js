@@ -1,25 +1,30 @@
-import { Breadcrumb, Layout } from 'antd';
+import { Layout } from 'antd';
 import 'antd/dist/antd.css';
+import { Route, Switch } from 'react-router-dom';
 import './App.css';
 import Navigate from './components/Navigate';
+import Blogs from './pages/Blogs';
+import AboutMe from './pages/AboutMe';
 
-const { Content, Footer } = Layout;
+const { Footer } = Layout;
 
 function App() {
     return (
         <div className="App">
             <Layout className="layout">
                 <Navigate />
-                <Content style={{ padding: '0 50px' }}>
-                    <Breadcrumb style={{ margin: '16px 0' }}>
-                        <Breadcrumb.Item>Home</Breadcrumb.Item>
-                        <Breadcrumb.Item>List</Breadcrumb.Item>
-                        <Breadcrumb.Item>App</Breadcrumb.Item>
-                    </Breadcrumb>
-                    <div className="site-layout-content">Content</div>
-                </Content>
+
+                <Switch>
+                    <Route path="/blogs" exact>
+                        <Blogs />
+                    </Route>
+                    <Route path="/about-me" exact>
+                        <AboutMe />
+                    </Route>
+                </Switch>
+
                 <Footer style={{ textAlign: 'center' }}>
-                    Ant Design ©2018 Created by Ant UED
+                    Copyright 2021 DucPham Blog, All Right Reserved
                 </Footer>
             </Layout>
         </div>
